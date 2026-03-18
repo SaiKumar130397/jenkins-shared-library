@@ -1,8 +1,9 @@
 def call() {
 
-    sh 'mkdir -p reports'
-
     def dcHome = tool 'dependency-check'
+
+    sh 'mkdir -p reports'
+    sh 'mkdir -p /var/lib/jenkins/odc-data'
 
     withCredentials([string(credentialsId: 'nvd-api-key', variable: 'NVD_API_KEY')]) {
 
@@ -13,8 +14,10 @@ def call() {
             --format XML \
             --format HTML \
             --out reports \
+            --data /var/lib/jenkins/odc-data \
             --failOnCVSS 8 \
-            --nvdApiKey $NVD_API_KEY
+            --nvdApiKey $NVD_API_KEY \
+            --nvdApiDelay 2000
         """
     }
 
