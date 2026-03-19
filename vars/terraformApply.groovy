@@ -1,4 +1,3 @@
-// vars/terraformApply.groovy
 def call(String envPath) {
 
     dir(envPath) {
