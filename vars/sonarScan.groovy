@@ -1,9 +1,13 @@
 def call() {
-    withSonarQubeEnv('SonarQube') {
+
+    withSonarQubeEnv('sonarqube') {
+
+        def scannerHome = tool 'sonar-scanner'
+
         sh """
-        sonar-scanner \
-        -Dsonar.projectKey=solar-system \
-        -Dsonar.sources=.
+        ${scannerHome}/bin/sonar-scanner \
+            -Dsonar.projectKey=solar-system \
+            -Dsonar.sources=.
         """
     }
 }
