@@ -1,5 +1,7 @@
 def call(String imageName, String tag) {
     sh """
-    trivy image ${imageName}:${tag} || true
+    trivy image \
+        --severity HIGH,CRITICAL \
+        ${imageName}:${imageTag} || true
     """
 }
