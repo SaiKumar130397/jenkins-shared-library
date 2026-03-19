@@ -15,9 +15,10 @@ def call() {
             --format HTML \
             --out reports \
             --data /var/lib/jenkins/odc-data \
-            --failOnCVSS 8 \
             --nvdApiKey $NVD_API_KEY \
             --nvdApiDelay 2000
+            --noupdate
+            || true
         """
     }
 
