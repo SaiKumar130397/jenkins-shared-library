@@ -1,4 +1,4 @@
-def call() {
+def call(String projectName) {
 
     def dcHome = tool 'dependency-check'
 
@@ -10,7 +10,7 @@ def call() {
         def status = sh(
             script: """
             ${dcHome}/bin/dependency-check.sh \
-                --project solar-system \
+                --project ${projectName} \
                 --scan . \
                 --format XML \
                 --format HTML \

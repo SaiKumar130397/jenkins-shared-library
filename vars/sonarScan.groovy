@@ -1,4 +1,4 @@
-def call() {
+def call(String projectKey) {
 
     withSonarQubeEnv('sonarqube') {
 
@@ -6,7 +6,7 @@ def call() {
 
         sh """
         ${scannerHome}/bin/sonar-scanner \
-            -Dsonar.projectKey=solar-system \
+            -Dsonar.projectKey=${projectKey} \
             -Dsonar.sources=.
         """
     }

@@ -1,3 +1,3 @@
-def call() {
-    sh 'npm install'
+def call(String command = 'npm install') {
+    sh "${command}"
 }
