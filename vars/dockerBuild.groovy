@@ -1,5 +1,7 @@
-def call(String imageName, String tag) {
-    sh """
-    docker build -t ${imageName}:${tag} .
-    """
+def call(String imageName, String tag, String target = '') {
+    if (target) {
+        sh "docker build --target ${target} -t ${imageName}:${tag} ."
+    } else {
+        sh "docker build -t ${imageName}:${tag} ."
+    }
 }
